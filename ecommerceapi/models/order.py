@@ -4,7 +4,9 @@ from django.urls import reverse
 from .customer import Customer
 from .paymenttype import PaymentType
 
-class Order(models.models):
+
+
+class Order(models.Model):
     
     customer_id = models.ForeignKey(Customer, on_delete = models.CASCADE )
     payment_type_id = models.ForeignKey(PaymentType, on_delete = models.CASCADE )

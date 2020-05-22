@@ -1,11 +1,9 @@
 from django.db import models
 from django.contrib.auth.models import User
 from django.urls import reverse
-from .product import Product
-from .order import Order
 from .customer import Customer
 
-class PaymentType(models.models):
+class PaymentType(models.Model):
     
     merchant_name = models.CharField(null = False, max_length = 25 )
     account_number = models.CharField(null = False, max_length = 25 )
