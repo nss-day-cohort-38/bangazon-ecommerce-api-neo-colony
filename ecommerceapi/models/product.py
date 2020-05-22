@@ -3,7 +3,7 @@ from django.contrib.auth.models import User
 from django.urls import reverse
 from .customer import Customer
 
-class Product(models.models):
+class Product(models.Model):
     
     title = models.CharField(null = False, max_length = 50 )
     customer_id = models.ForeignKey(Customer, on_delete = models.CASCADE )
