@@ -1,0 +1,23 @@
+[
+    {
+        "model": "ecommerceapi.customers",
+        "pk": 1,
+        "address": "123 Williamson Drive",
+        "phone_number": "615-390-5555",
+        "user_id": 1 
+    },
+    {
+        "model": "ecommerceapi.customers",
+        "pk": 2,
+        "address": "456 Turnpike Lane",
+        "phone_number": "672-998-5555",
+        "user_id": 2 
+    },
+    {
+        "model": "ecommerceapi.customers",
+        "pk": 3,
+        "address": "867 Woodward Avenue",
+        "phone_number": "615-900-2222",
+        "user_id": 3
+    }
+]
