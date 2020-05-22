@@ -3,7 +3,7 @@ from django.contrib.auth.models import User
 from django.urls import reverse
 
 
-class ProductType(models.models):
+class ProductType(models.Model):
     
     name = models.CharField(null = False, max_length = 55)
     
