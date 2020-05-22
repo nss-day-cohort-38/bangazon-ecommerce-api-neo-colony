@@ -1,8 +1,6 @@
 from django.db import models
 from django.contrib.auth.models import User
 from django.urls import reverse
-from .product import Product
-from .order import Order
 from .customer import Customer
 
 class Product(models.models):
