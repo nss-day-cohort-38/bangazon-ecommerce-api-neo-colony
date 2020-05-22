@@ -1,16 +1,16 @@
 [
     {
-        "model": "ecommerceapi.producttype",
+        "model": "ecommerceapi.productType",
         "pk": 1,
         "name": "Electronics"
     },
     {
-        "model": "ecommerceapi.producttype",
+        "model": "ecommerceapi.productType",
         "pk": 2,
         "name": "Sporting Goods"
     },
     {
-        "model": "ecommerceapi.producttype",
+        "model": "ecommerceapi.productType",
         "pk": 3,
         "name": "Appliances"
     }

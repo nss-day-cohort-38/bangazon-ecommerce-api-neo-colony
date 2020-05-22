@@ -1,20 +1,20 @@
 [
     {
-        "model": "ecommerceapi.orders",
+        "model": "ecommerceapi.order",
         "pk": 1,
         "customer_id": 1,
         "payment_type_id": 1,
         "created_at": "2019-09-08"
     },
     {
-        "model": "ecommerceapi.orders",
+        "model": "ecommerceapi.order",
         "pk": 2,
         "customer_id": 2,
         "payment_type_id": 2,
         "created_at": "2019-09-08"
     },
     {
-        "model": "ecommerceapi.orders",
+        "model": "ecommerceapi.order",
         "pk": 3,
         "customer_id": 3,
         "payment_type_id": null,
