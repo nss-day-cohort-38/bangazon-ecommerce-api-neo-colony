@@ -1,26 +1,26 @@
 [
-    {
-        "pk": 1,
-        "model": "ecommerceapi.orderproduct",
-        "fields": {
-        "order_id": 1,
-        "product_id": 1
-        }
-    },
-    {
-        "pk": 2,
-        "model": "ecommerceapi.orderproduct",
-        "fields": {
-        "order_id": 2,
-        "product_id": 2
-        }
-    },
-    {
-        "pk": 3,
-        "model": "ecommerceapi.orderproduct",
-        "fields": {
-        "order_id": 3,
-        "product_id": 3
-        }
+  {
+    "pk": 1,
+    "model": "ecommerceapi.orderproduct",
+    "fields": {
+      "order_id": 1,
+      "product_id": 1
     }
+  },
+  {
+    "pk": 2,
+    "model": "ecommerceapi.orderproduct",
+    "fields": {
+      "order_id": 2,
+      "product_id": 2
+    }
+  },
+  {
+    "pk": 3,
+    "model": "ecommerceapi.orderproduct",
+    "fields": {
+      "order_id": 3,
+      "product_id": 3
+    }
+  }
 ]
