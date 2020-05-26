@@ -8,8 +8,8 @@ from .paymenttype import PaymentType
 
 class Order(models.Model):
     
-    customer_id = models.ForeignKey(Customer, on_delete = models.CASCADE )
-    payment_type_id = models.ForeignKey(PaymentType, on_delete = models.CASCADE )
+    customer = models.ForeignKey(Customer, on_delete = models.CASCADE )
+    payment_type = models.ForeignKey(PaymentType, on_delete = models.CASCADE )
     created_at = models.DateTimeField()
     
     class Meta:
@@ -17,7 +17,7 @@ class Order(models.Model):
         verbose_name_plural = ("Orders")        
         
     def __str__(self):
-        return f"Customer ID: {self.customer_id}  Payment Type:{self.payment_type_id} Created At:{self.created_id}"
+        return f"Customer ID: {self.customer}  Payment Type:{self.payment_type} Created At:{self.created}"
     
     def get_absolute_url(self):
         return reverse("order_detail", kwargs={"pk": self.pk})
