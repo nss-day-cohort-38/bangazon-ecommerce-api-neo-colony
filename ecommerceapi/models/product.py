@@ -7,7 +7,7 @@ class Product(models.Model):
     
     title = models.CharField(null = False, max_length = 50 )
     customer_id = models.ForeignKey(Customer, on_delete = models.CASCADE )
-    price = models.Decimal(value="0", context=None)
+    price = models.FloatField(null = False)
     description = models.CharField(null = False, max_length = 255 )
     quantity = models.IntegerField(null = False)
     location = models.CharField(null = False, max_length = 75 )
