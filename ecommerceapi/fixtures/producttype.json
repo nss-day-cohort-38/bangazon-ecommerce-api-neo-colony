@@ -1,17 +1,23 @@
 [
-    {
-        "model": "ecommerceapi.producttype",
-        "pk": 1,
-        "name": "Electronics"
-    },
-    {
-        "model": "ecommerceapi.producttype",
-        "pk": 2,
-        "name": "Sporting Goods"
-    },
-    {
-        "model": "ecommerceapi.producttype",
-        "pk": 3,
-        "name": "Appliances"
+  {
+    "pk": 1,
+    "model": "ecommerceapi.producttype",
+    "fields": {
+      "name": "Electronics"
     }
+  },
+  {
+    "pk": 2,
+    "model": "ecommerceapi.producttype",
+    "fields": {
+      "name": "Sporting Goods"
+    }
+  },
+  {
+    "pk": 3,
+    "model": "ecommerceapi.producttype",
+    "fields": {
+      "name": "Appliances"
+    }
+  }
 ]
