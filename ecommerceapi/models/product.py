@@ -6,7 +6,7 @@ from .customer import Customer
 class Product(models.Model):
     
     title = models.CharField(null = False, max_length = 50 )
-    customer_id = models.ForeignKey(Customer, on_delete = models.CASCADE )
+    customer = models.ForeignKey(Customer, on_delete = models.CASCADE )
     price = models.FloatField(null = False)
     description = models.CharField(null = False, max_length = 255 )
     quantity = models.IntegerField(null = False)
@@ -24,4 +24,4 @@ class Product(models.Model):
         return f"Title: {self.title}"
     
     def get_absolute_url(self):
-        return reverse("Product_detail", kwargs={"pk": self.pk})
+        return reverse("Product_detail", kwargs={"pk": self.pk})    
