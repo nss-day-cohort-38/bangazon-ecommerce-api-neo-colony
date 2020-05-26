@@ -17,7 +17,7 @@
         "model": "ecommerceapi.order",
         "pk": 3,
         "customer_id": 3,
-        "payment_type_id": null,
+        "payment_type_id": 3,
         "created_at": "2020-04-03"
     }
 ]
