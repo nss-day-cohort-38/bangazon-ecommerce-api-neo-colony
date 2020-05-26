@@ -18,7 +18,7 @@ from rest_framework import routers
 from rest_framework.authtoken.views import obtain_auth_token
 from django.contrib import admin
 from django.urls import path
-from ecommerceapi.models import *
+# from ecommerceapi.models import *
 from ecommerceapi.views import *
 
 router = routers.DefaultRouter(trailing_slash=False)
@@ -26,4 +26,5 @@ router.register(r'products', Products, 'product')
 
 urlpatterns = [
     path('admin/', admin.site.urls),
+    path('', include(router.urls)),
 ]
