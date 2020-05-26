@@ -1,41 +1,47 @@
 [
-    {
-        "model": "ecommerceapi.product",
-        "pk": 1,
-        "title": "MacBook Air",
-        "customer_id": 1,
-        "price": "899.99",
-        "description": "Slim and lightweight Apple laptop",
-        "quantity": 100,
-        "location": "California",
-        "image_path": "https://cnet3.cbsistatic.com/img/KEM_0EsoAP-9kOds2Fbal9Ww540=/1200x675/2017/08/14/ec0fa893-faf2-46c3-8933-6898773804ba/apple-macbook-air-2017-05.jpg",
-        "created_at": "2017-09-08",
-        "product_type_id": 1
-    },
-    {
-        "model": "ecommerceapi.product",
-        "pk": 2,
-        "title": "Landyachtz Longboard",
-        "customer_id": 2,
-        "price": "129.99",
-        "description": "Sharp and agile edges. Speedy yet smooth.",
-        "quantity": 83,
-        "location": "Washington",
-        "image_path": "https://sohimages.com/images/images_soh/EVO-13-C-2.jpg",
-        "created_at": "2015-03-05",
-        "product_type_id": 2
-    },
-    {
-        "model": "ecommerceapi.product",
-        "pk": 3,
-        "title": "Keurig K-Mini",
-        "customer_id": 3,
-        "price": "99.99",
-        "description": "Single serve Keurig machine",
-        "quantity": 20,
-        "location": "Michigan",
-        "image_path": "https://images-na.ssl-images-amazon.com/images/I/71tybZyMkuL._AC_SX522_.jpg",
-        "created_at": "2018-08-06",
-        "product_type_id": 3
+  {
+    "pk": 1,
+    "model": "ecommerceapi.product",
+    "fields": {
+      "title": "MacBook Air",
+      "customer_id": 1,
+      "price": "899.99",
+      "description": "Slim and lightweight Apple laptop",
+      "quantity": 100,
+      "location": "California",
+      "image_path": "https://cnet3.cbsistatic.com/img/KEM_0EsoAP-9kOds2Fbal9Ww540=/1200x675/2017/08/14/ec0fa893-faf2-46c3-8933-6898773804ba/apple-macbook-air-2017-05.jpg",
+      "created_at": "2017-09-08",
+      "product_type_id": 1
     }
+  },
+  {
+    "pk": 2,
+    "model": "ecommerceapi.product",
+    "fields": {
+      "title": "Landyachtz Longboard",
+      "customer_id": 2,
+      "price": "129.99",
+      "description": "Sharp and agile edges. Speedy yet smooth.",
+      "quantity": 83,
+      "location": "Washington",
+      "image_path": "https://sohimages.com/images/images_soh/EVO-13-C-2.jpg",
+      "created_at": "2015-03-05",
+      "product_type_id": 2
+    }
+  },
+  {
+    "pk": 3,
+    "model": "ecommerceapi.product",
+    "fields": {
+      "title": "Keurig K-Mini",
+      "customer_id": 3,
+      "price": "99.99",
+      "description": "Single serve Keurig machine",
+      "quantity": 20,
+      "location": "Michigan",
+      "image_path": "https://images-na.ssl-images-amazon.com/images/I/71tybZyMkuL._AC_SX522_.jpg",
+      "created_at": "2018-08-06",
+      "product_type_id": 3
+    }
+  }
 ]

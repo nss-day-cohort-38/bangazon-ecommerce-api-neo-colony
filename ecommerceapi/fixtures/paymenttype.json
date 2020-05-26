@@ -1,29 +1,35 @@
 [
-    {
-        "model": "ecommerceapi.paymenttype",
-        "pk": 1,
-        "merchant_name": "Alfred Salesman",
-        "account_number": "1000055555",
-        "expiration_date": "2022-05-12",
-        "customer_id": 1,
-        "created_at": "2020-05-04"
-    },
-    {
-        "model": "ecommerceapi.paymenttype",
-        "pk": 2,
-        "merchant_name": "Simon Buyer",
-        "account_number": "20985555",
-        "expiration_date": "2023-08-08",
-        "customer_id": 2,
-        "created_at": "2019-07-03"
-    },
-    {
-        "model": "ecommerceapi.paymenttype",
-        "pk": 3,
-        "merchant_name": "Rebecca Follows",
-        "account_number": "12900877",
-        "expiration_date": "2021-09-23",
-        "customer_id": 3,
-        "created_at": "2019-04-11"
+  {
+    "pk": 1,
+    "model": "ecommerceapi.paymenttype",
+    "fields": {
+      "merchant_name": "Alfred Salesman",
+      "account_number": "1000055555",
+      "expiration_date": "2022-05-12",
+      "customer_id": 1,
+      "created_at": "2020-05-04"
     }
+  },
+  {
+    "pk": 2,
+    "model": "ecommerceapi.paymenttype",
+    "fields": {
+      "merchant_name": "Simon Buyer",
+      "account_number": "20985555",
+      "expiration_date": "2023-08-08",
+      "customer_id": 2,
+      "created_at": "2019-07-03"
+    }
+  },
+  {
+    "pk": 3,
+    "model": "ecommerceapi.paymenttype",
+    "fields": {
+      "merchant_name": "Rebecca Follows",
+      "account_number": "12900877",
+      "expiration_date": "2021-09-23",
+      "customer_id": 3,
+      "created_at": "2019-04-11"
+    }
+  }
 ]
