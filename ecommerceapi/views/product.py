@@ -1,14 +1,3 @@
-# Given the user is not authenticated
-# When any view renders
-# Then the Sell a Product affordance will not be visible
-
-# Given the user is authenticated
-# When the user clicks on the Sell a product button in the menu bar
-# Then the user will be presented with a product form
-
-# Given the user has filled in all fields of the product form with any invalid information
-# When the user clicks the Sell button
-# Then the user will be immediately notified with error information for each invalid value
 from django.http import HttpResponseServerError
 from rest_framework.viewsets import ViewSet
 from rest_framework.response import Response
