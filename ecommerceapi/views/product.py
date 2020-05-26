@@ -88,3 +88,9 @@ class Products(ViewSet):
 
         except Exception as ex:
             return Response({'message': ex.args[0]}, status=status.HTTP_500_INTERNAL_SERVER_ERROR)
+        
+    def list(self, request):
+        product = Product.objects.all()
+        serializer = ProductSerializer(
+            product, many=True, context={'request': request})
+        return Response(serializer.data)
