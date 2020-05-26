@@ -56,6 +56,14 @@ class Products(ViewSet):
 
             return Response(serializer.data)
         
+    def retrieve(self, request, pk=None):
+        try:
+            product = Product.objects.get(pk=pk)
+            serializer = ProductSerializer(product, context={'request': request})
+            return Response(serializer.data)
+        except Exception as ex:
+            return HttpResponseServerError(ex)
+        
     def put(self, request, pk=None):
         """Handle PUT requests for an individual product
 
