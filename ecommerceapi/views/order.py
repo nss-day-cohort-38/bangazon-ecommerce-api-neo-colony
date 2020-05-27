@@ -13,25 +13,16 @@ class OrderSerializer(serializers.HyperlinkedModelSerializer):
             view_name='order',
             lookup_field='id'
         )
-        fields = ('id', 'customer_id', 'payment_type_id, 'created_at')
+        fields = ('id', 'customer_id', 'payment_type_id', 'created_at')
 
 
-class Products(ViewSet):
+class Orders(ViewSet):
 
     def create(self, request):
-        """Handle POST operations
-
-        Returns:
-            Response -- JSON serialized Attraction instance
-        """
-        new_product = Product()
-        new_product.title = request.data["title"]
-        new_product.price = request.data["price"]
-        new_product.description = request.data["description"]
-        new_product.quantity = request.data["quantity"]
-        new_product.location = request.data["location"]
-        new_product.image_path = request.data["image_path"]
-        new_product.product_type_id = request.data["product_type_id"]
+   
+        new_order = Order()
+        new_order.payment_type_id = request.data["payment_type_id"]
+       
 
         customer = Customer.objects.get(pk=request.data["customer_id"])
         new_product.customer = customer
