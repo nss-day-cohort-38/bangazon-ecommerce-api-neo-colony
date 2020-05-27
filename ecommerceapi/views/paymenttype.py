@@ -34,8 +34,6 @@ class PaymentTypes(ViewSet):
         new_payment_type.merchant_name = request.data["merchant_name"]
         new_payment_type.account_number = request.data["account_number"]
         new_payment_type.expiration_date = request.data["expiration_date"]
-        # new_payment_type.created_at = request.data["created_at"]
-        # new_payment_type.customer_id = request.data["customer_id"]
 
         customer = Customer.objects.get(pk=request.data["customer_id"])
         new_payment_type.customer = customer
