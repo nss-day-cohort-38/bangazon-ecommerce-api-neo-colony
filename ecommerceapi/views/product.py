@@ -104,7 +104,7 @@ class Products(ViewSet):
         location = self.request.query_params.get('location')
 
         if total is not None:
-            products = Product.objects.filter(since=since).order_by('-id')[:{int(total)}]
+            products = Product.objects.order_by('-id')[:int(total)]
 
         if search_term is not None:
             products = Product.objects.filter(title__icontains=search_term)
