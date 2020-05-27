@@ -110,7 +110,7 @@ class Products(ViewSet):
             products = Product.objects.filter(title__icontains=search_term)
         
         if location is not None:
-            products = Product.objects.filter(location = location)
+            products = Product.objects.filter(location__icontains = location)
 
         serializer = ProductSerializer(
             products, many=True, context={'request': request})
