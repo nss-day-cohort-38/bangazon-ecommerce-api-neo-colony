@@ -5,6 +5,7 @@ from rest_framework import serializers
 from rest_framework import status
 from ..models import Product, Customer
 from django.contrib.auth.models import User
+from .user import Users
 
 
 class CustomerSerializer(serializers.HyperlinkedModelSerializer):
@@ -23,27 +24,6 @@ class CustomerSerializer(serializers.HyperlinkedModelSerializer):
         depth = 1
 
 class Customers(ViewSet):
-    
-    # def create(self, request):
-
-    #     newuser = User()
-    #     newuser.first_name = request.data['first_name']
-    #     newuser.last_name = request.data['last_name']
-    #     newuser.password = request.data['password']
-    #     newuser.email = request.data['email']
-        
-    #     newuser.save()
-
-    #     newcustomer = Customer()
-    #     newcustomer.address = request.data['address']
-    #     newcustomer.phone_number = request.data['phone_number']
-    #     newcustomer.user_id = newuser.id
-
-    #     newcustomer.save()
-
-    #     serializer = CustomerSerializer(newcustomer, context={'request': request})
-
-    #     return Response(serializer.data)
 
     def retrieve(self, request, pk=None):
         try:
