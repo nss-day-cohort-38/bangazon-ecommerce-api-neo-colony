@@ -99,9 +99,9 @@ class Products(ViewSet):
         search_term = self.request.query_params.get('title')
 
         if search_term is not None:
-            products = Product.objects.get(title__icontains=s earch_term)
+            products = Product.objects.filter(title__icontains=search_term)
 
         serializer = ProductSerializer(
-            product, many=True, context={'request': request})
+            products, many=True, context={'request': request})
 
         return Response(serializer.data)
