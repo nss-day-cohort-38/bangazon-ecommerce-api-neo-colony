@@ -71,23 +71,23 @@ class PaymentTypes(ViewSet):
 
     #     return Response({}, status=status.HTTP_204_NO_CONTENT)
 
-    # def destroy(self, request, pk=None):
-    #     """Handle DELETE requests for a single product
+    def destroy(self, request, pk=None):
+        """Handle DELETE requests for a single payment type
 
-    #     Returns:
-    #         Response -- 200, 404, or 500 status code
-    #     """
-    #     try:
-    #         product = Product.objects.get(pk=pk)
-    #         product.delete()
+        Returns:
+            Response -- 200, 404, or 500 status code
+        """
+        try:
+            payment_type = PaymentType.objects.get(pk=pk)
+            payment_type.delete()
 
-    #         return Response({}, status=status.HTTP_204_NO_CONTENT)
+            return Response({}, status=status.HTTP_204_NO_CONTENT)
 
-    #     except Product.DoesNotExist as ex:
-    #         return Response({'message': ex.args[0]}, status=status.HTTP_404_NOT_FOUND)
+        except PaymentType.DoesNotExist as ex:
+            return Response({'message': ex.args[0]}, status=status.HTTP_404_NOT_FOUND)
 
-    #     except Exception as ex:
-    #         return Response({'message': ex.args[0]}, status=status.HTTP_500_INTERNAL_SERVER_ERROR)
+        except Exception as ex:
+            return Response({'message': ex.args[0]}, status=status.HTTP_500_INTERNAL_SERVER_ERROR)
 
     # def list(self, request):
         
