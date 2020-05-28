@@ -1,9 +1,13 @@
+from safedelete.models import SafeDeleteModel
+from safedelete.models import HARD_DELETE_NOCASCADE
+
 from django.db import models
 from django.contrib.auth.models import User
 from django.urls import reverse
 from .customer import Customer
 
-class PaymentType(models.Model):
+class PaymentType(SafeDeleteModel):
+    _safedelete_policy = HARD_DELETE_NOCASCADE
     
     merchant_name = models.CharField(null = False, max_length = 25 )
     account_number = models.CharField(null = False, max_length = 25 )
