@@ -21,26 +21,26 @@ class Orders(ViewSet):
     def create(self, request):
    
         new_order = Order()
-        new_order.payment_type_id = request.data["payment_type_id"]
-       
+        new_order = Order.objects.get(pk=request.data["payment_type_id"])
+        new_order.payment_type_id = new_order
 
         customer = Customer.objects.get(pk=request.data["customer_id"])
-        new_product.customer = customer
-        new_product.save()
+        new_order.customer = customer
+        new_order.save()
 
-        serializer = ProductSerializer(
-            new_product, context={'request': request})
+        serializer = OrderSerializer(
+            new_order, context={'request': request})
 
         return Response(serializer.data)
 
-    # def retrieve(self, request, pk=None):
-    #     try:
-    #         product = Product.objects.get(pk=pk)
-    #         serializer = ProductSerializer(
-    #             product, context={'request': request})
-    #         return Response(serializer.data)
-    #     except Exception as ex:
-    #         return HttpResponseServerError(ex)
+    def retrieve(self, request, pk=None):
+        try:
+            order = Order.objects.get(pk=pk)
+            serializer = OrderSerializer(
+                order, context={'request': request})
+            return Response(serializer.data)
+        except Exception as ex:
+            return HttpResponseServerError(ex)
 
     # def put(self, request, pk=None):
     #     """Handle PUT requests for an individual product
