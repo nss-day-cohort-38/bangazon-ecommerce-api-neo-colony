@@ -7,7 +7,7 @@ from ..models import PaymentType, Customer
 
 
 class PaymentTypeSerializer(serializers.HyperlinkedModelSerializer):
-    """JSON serializer for park areas
+    """JSON serializer for PaymentTypes
 
     Arguments:
         serializers
@@ -25,7 +25,7 @@ class PaymentTypeSerializer(serializers.HyperlinkedModelSerializer):
 class PaymentTypes(ViewSet):
 
     def create(self, request):
-        """Handle POST operations
+        """Handle POST PaymentTypes
 
         Returns:
             Response -- JSON serialized Attraction instance

@@ -9,7 +9,7 @@ from .user import Users
 
 
 class CustomerSerializer(serializers.HyperlinkedModelSerializer):
-    """JSON serializer for park areas
+    """JSON serializer for Customers
 
     Arguments:
         serializers

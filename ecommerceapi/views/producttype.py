@@ -3,7 +3,7 @@ from rest_framework.viewsets import ViewSet
 from rest_framework.response import Response
 from rest_framework import serializers
 from rest_framework import status
-from ..models import ProductType
+from ..models import ProductType, Product
 
 
 class ProductTypeSerializer(serializers.HyperlinkedModelSerializer):
@@ -20,15 +20,13 @@ class ProductTypes(ViewSet):
     
     def list(self, request):
         
-        producttypes = ProductType.objects.all()
-        
-        categories=dict()
-        
-        for producttype in producttypes:
-            categories.update(producttype)
-            print(producttype, "PRODUCT TYPES!!!!!!!!")
+        ptypes = ProductType.objects.all()
+      
+        for ptype in ptypes:
+            ptype.total = len(Product.objects.filter(product_type_id=ptype.id))
+            ptype.products = Product.objects.filter(product_type_id=ptype.id).order_by('-id')[:3]
 
         serializer = ProductTypeSerializer(
-            producttypes, many=True, context={'request': request})
+            ptypes, many=True, context={'request': request})
         
         return Response(serializer.data)
