@@ -23,10 +23,14 @@ from ecommerceapi.views.customer import Customers
 from ecommerceapi.views.order import Orders
 from ecommerceapi.views.product import Products
 from ecommerceapi.views.user import Users
+from ecommerceapi.views.paymenttype import PaymentTypes
 
+# from ecommerceapi.models import *
+# from ecommerceapi.views import *
 
 router = routers.DefaultRouter(trailing_slash=False)
 router.register(r'products', Products, 'product')
+router.register(r'paymenttypes', PaymentTypes, 'paymenttype')
 router.register(r'customers', Customers, 'customer')
 router.register(r'users', Users, 'user')
 router.register(r'orders', Orders, 'user')
