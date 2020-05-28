@@ -7,11 +7,7 @@ from ..models import Product, Customer
 
 
 class ProductSerializer(serializers.HyperlinkedModelSerializer):
-    """JSON serializer for park areas
 
-    Arguments:
-        serializers
-    """
     class Meta:
         model = Product
         url = serializers.HyperlinkedIdentityField(
@@ -25,11 +21,7 @@ class ProductSerializer(serializers.HyperlinkedModelSerializer):
 class Products(ViewSet):
 
     def create(self, request):
-        """Handle POST operations
-
-        Returns:
-            Response -- JSON serialized Attraction instance
-        """
+    
         new_product = Product()
         new_product.title = request.data["title"]
         new_product.price = request.data["price"]

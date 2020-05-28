@@ -2,6 +2,7 @@ from django.db import models
 from django.contrib.auth.models import User
 from django.urls import reverse
 from .customer import Customer
+from .producttype import ProductType
 
 class Product(models.Model):
     
@@ -13,7 +14,7 @@ class Product(models.Model):
     location = models.CharField(null = False, max_length = 75 )
     image_path = models.CharField(null = False, max_length = 255 )
     created_at = models.DateTimeField(auto_now_add= True)
-    product_type_id = models.IntegerField(null = False)
+    product_type = models.ForeignKey(ProductType, related_name="products", null = False, on_delete = models.DO_NOTHING)
     
     
     class Meta:
