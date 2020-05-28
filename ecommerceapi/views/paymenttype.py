@@ -44,14 +44,14 @@ class PaymentTypes(ViewSet):
 
         return Response(serializer.data)
 
-    # def retrieve(self, request, pk=None):
-    #     try:
-    #         paymenttype = PaymentType.objects.get(pk=pk)
-    #         serializer = PaymentTypeSerializer(
-    #             paymenttype, context={'request': request})
-    #         return Response(serializer.data)
-    #     except Exception as ex:
-    #         return HttpResponseServerError(ex)
+    def retrieve(self, request, pk=None):
+        try:
+            paymenttype = PaymentType.objects.get(pk=pk)
+            serializer = PaymentTypeSerializer(
+                paymenttype, context={'request': request})
+            return Response(serializer.data)
+        except Exception as ex:
+            return HttpResponseServerError(ex)
 
     # def put(self, request, pk=None):
     #     """Handle PUT requests for an individual product
