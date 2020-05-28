@@ -44,33 +44,6 @@ class PaymentTypes(ViewSet):
 
         return Response(serializer.data)
 
-    def retrieve(self, request, pk=None):
-        try:
-            paymenttype = PaymentType.objects.get(pk=pk)
-            serializer = PaymentTypeSerializer(
-                paymenttype, context={'request': request})
-            return Response(serializer.data)
-        except Exception as ex:
-            return HttpResponseServerError(ex)
-
-    # def put(self, request, pk=None):
-    #     """Handle PUT requests for an individual product
-
-    #     Returns:
-    #         Response -- Empty body with 204 status code
-    #     """
-    #     product = Product.objects.get(pk=pk)
-    #     product.title = request.data["title"]
-    #     product.price = request.data["price"]
-    #     product.description = request.data["description"]
-    #     product.quantity = request.data["quantity"]
-    #     product.location = request.data["location"]
-    #     product.image_path = request.data["image_path"]
-    #     product.product_type_id = request.data["product_type_id"]
-    #     product.save()
-
-    #     return Response({}, status=status.HTTP_204_NO_CONTENT)
-
     def destroy(self, request, pk=None):
         """Handle DELETE requests for a single payment type
 
