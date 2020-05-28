@@ -10,7 +10,7 @@ class Order(models.Model):
     
     customer = models.ForeignKey(Customer, on_delete = models.CASCADE )
     payment_type = models.ForeignKey(PaymentType, on_delete = models.CASCADE )
-    created_at = models.DateTimeField()
+    created_at = models.DateTimeField(auto_now_add= True)
     
     class Meta:
         verbose_name = ("Order")

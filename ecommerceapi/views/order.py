@@ -3,7 +3,7 @@ from rest_framework.viewsets import ViewSet
 from rest_framework.response import Response
 from rest_framework import serializers
 from rest_framework import status
-from ..models import Product, Customer,Order
+from ..models import Product, Customer,Order, PaymentType
 
 
 class OrderSerializer(serializers.HyperlinkedModelSerializer):
@@ -18,12 +18,15 @@ class OrderSerializer(serializers.HyperlinkedModelSerializer):
 
 class Orders(ViewSet):
 
-    def create(self, request):
-   
-        new_order = Order()
-        new_order = Order.objects.get(pk=request.data["payment_type_id"])
-        new_order.payment_type_id = new_order
+   def create(self, request):
+        """Handle POST operations
 
+        Returns:
+            Response -- JSON serialized Attraction instance
+        """
+        new_order = Order()
+        payment_type = PaymentType.objects.get(pk=request.data["payment_type_id"])
+        new_order.payment_type = payment_type
         customer = Customer.objects.get(pk=request.data["customer_id"])
         new_order.customer = customer
         new_order.save()
@@ -33,7 +36,7 @@ class Orders(ViewSet):
 
         return Response(serializer.data)
 
-    def retrieve(self, request, pk=None):
+def retrieve(self, request, pk=None):
         try:
             order = Order.objects.get(pk=pk)
             serializer = OrderSerializer(
@@ -78,7 +81,7 @@ class Orders(ViewSet):
     #     except Exception as ex:
     #         return Response({'message': ex.args[0]}, status=status.HTTP_500_INTERNAL_SERVER_ERROR)
 
-    def list(self, request):
+def list(self, request):
         
         order = Order.objects.all()
 
