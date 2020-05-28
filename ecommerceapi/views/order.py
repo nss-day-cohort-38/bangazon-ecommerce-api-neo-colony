@@ -78,26 +78,11 @@ class Orders(ViewSet):
     #     except Exception as ex:
     #         return Response({'message': ex.args[0]}, status=status.HTTP_500_INTERNAL_SERVER_ERROR)
 
-    # def list(self, request):
+    def list(self, request):
         
-    #     products = Product.objects.all()
+        order = Order.objects.all()
 
-    #     total = self.request.query_params.get('total')
+        serializer = OrderSerializer(
+            order, many=True, context={'request': request})
 
-    #     search_term = self.request.query_params.get('title')
-
-    #     location = self.request.query_params.get('location')
-
-    #     if total is not None:
-    #         products = Product.objects.order_by('-id')[:int(total)]
-
-    #     if search_term is not None:
-    #         products = Product.objects.filter(title__icontains=search_term)
-        
-    #     if location is not None:
-    #         products = Product.objects.filter(location__icontains = location)
-
-    #     serializer = ProductSerializer(
-    #         products, many=True, context={'request': request})
-
-    #     return Response(serializer.data)
+        return Response(serializer.data)
