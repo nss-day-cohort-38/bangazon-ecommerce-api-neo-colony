@@ -18,15 +18,9 @@ from rest_framework import routers
 from rest_framework.authtoken.views import obtain_auth_token
 from ecommerceapi.views import register_user, login_user
 from django.contrib import admin
-from django.urls import path
-from ecommerceapi.views.customer import Customers
-from ecommerceapi.views.order import Orders
-from ecommerceapi.views.product import Products
-from ecommerceapi.views.user import Users
-from ecommerceapi.views.paymenttype import PaymentTypes
+from django.urls import path 
+from ecommerceapi.views import *
 
-# from ecommerceapi.models import *
-# from ecommerceapi.views import *
 
 router = routers.DefaultRouter(trailing_slash=False)
 router.register(r'products', Products, 'product')
@@ -34,6 +28,7 @@ router.register(r'paymenttypes', PaymentTypes, 'paymenttype')
 router.register(r'customers', Customers, 'customer')
 router.register(r'users', Users, 'user')
 router.register(r'orders', Orders, 'user')
+router.register(r'producttypes', ProductTypes, 'producttype')
 
 
 
