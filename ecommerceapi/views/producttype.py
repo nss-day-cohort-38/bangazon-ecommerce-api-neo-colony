@@ -14,18 +14,27 @@ class ProductTypeSerializer(serializers.HyperlinkedModelSerializer):
             view_name='producttype',
             lookup_field= 'id'
         )
-        fields = ('id', 'name')
+        fields = ('id', 'name', 'products')
+
+        depth = 1
         
 class ProductTypes(ViewSet):
+
+    def retrieve(self, request, pk=None):
+        try:
+            ptype = ProductType.objects.get(pk=pk)
+            serializer = ProductTypeSerializer(
+                ptype, context={'request': request}
+            )
+            return Response(serializer.data)
+            
+        except Exception as ex:
+            return HttpResponseServerError(ex)
     
     def list(self, request):
         
         ptypes = ProductType.objects.all()
       
-        for ptype in ptypes:
-            ptype.total = len(Product.objects.filter(product_type_id=ptype.id))
-            ptype.products = Product.objects.filter(product_type_id=ptype.id).order_by('-id')[:3]
-
         serializer = ProductTypeSerializer(
             ptypes, many=True, context={'request': request})
         
