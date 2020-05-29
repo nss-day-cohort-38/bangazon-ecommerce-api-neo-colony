@@ -8,9 +8,9 @@ from ..models import Product, Customer, Order, PaymentType, OrderProduct
 
 class OrderProductSerializer(serializers.HyperlinkedModelSerializer):
     class Meta:
-        model = OrderProducts
+        model = OrderProduct
         url = serializers.HyperlinkedIdentityField(
-            view_name='order_product',
+            view_name='orderproduct',
             lookup_field='id'
         )
         fields = ('id', 'order_id', 'product_id')
@@ -19,32 +19,33 @@ class OrderProducts(ViewSet):
 
     def create(self, request):
 
-        customer = Customer.objects.filter(user_id = request.auth.user.id)
-        order = Order.object.filter(customer_id=customer.id, payment_type=None)
+        customer = Customer.objects.get(user_id=request.auth.user.id)
 
-        if order is None:
+        try:
+            order = Order.objects.get(customer_id=customer.id, payment_type=None)
+
+            new_order_product = OrderProduct()
+            new_order_product.product_id = request.data['product_id']
+            new_order_product.order_id = order.id
+
+            new_order_product.save()
+
+            serialize = OrderProductSerializer(new_order_product, context={'request': request}) 
+
+        except:
 
             new_order = Order()
             new_order.customer_id = customer.id
             new_order.save()
 
             new_order_product = OrderProduct()
-            new_order_product.customer_id = customer.id
+            new_order_product.product_id = request.data['product_id']
             new_order_product.order_id = new_order.id
 
             new_order_product.save()
 
-            # serialize = OrderProductSerializer(new_order_product, context={'request': request}) 
-        
-        else:
+            serialize = OrderProductSerializer(new_order_product, context={'request': request}) 
 
-            new_order_product = OrderProduct()
-            new_order_product.customer_id = customer.id
-            new_order_product.order_id = order.id
-
-            new_order_product.save()
-
-        serialize = OrderProductSerializer(new_order_product, context={'request': request}) 
         return Response(serialize.data) 
                 
 
