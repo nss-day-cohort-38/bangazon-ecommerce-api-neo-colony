@@ -19,4 +19,4 @@
 1. Run `python manage.py makemigrations` & `python manage.py migrate` to update your DB with the new safedelete module.
 
 ## ERD
-Here is your [Bangazon eCommerce ERD](https://dbdiagram.io/d/5eb4d6d639d18f5553fedfb5). There should be no changes made to your ERD without approval from your product manager.
+Here is your [Bangazon eCommerce ERD](https://dbdiagram.io/d/5ed15c7b39d18f5553fff82c). There should be no changes made to your ERD without approval from your product manager.
