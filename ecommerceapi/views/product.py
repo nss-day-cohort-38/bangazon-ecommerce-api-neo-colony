@@ -97,6 +97,8 @@ class Products(ViewSet):
 
         category_id = self.request.query_params.get('category')
 
+        sellers_products = Product.objects.filter(customer_id=request.auth.user.id)
+
         if total is not None:
             products = Product.objects.order_by('-id')[:int(total)]
 
