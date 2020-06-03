@@ -30,6 +30,7 @@ router.register(r'users', Users, 'user')
 router.register(r'orders', Orders, 'order')
 router.register(r'producttypes', ProductTypes, 'producttype')
 router.register(r'orderproducts', OrderProducts, 'orderproduct')
+router.register(r'productrecs', ProductRecs, 'productrec')
 router.register(r'productlikes', ProductLikes, 'productlike')
 
 
