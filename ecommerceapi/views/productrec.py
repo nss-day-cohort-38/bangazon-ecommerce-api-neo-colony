@@ -14,7 +14,7 @@ class ProductRecSerializer(serializers.HyperlinkedModelSerializer):
             view_name='productrec',
             lookup_field='id'
         )
-        fields = ('id', 'sender_id', 'reciever_id')
+        fields = ('id', 'sender_id', 'receiver_id')
 
 class ProductRecs(ViewSet):
 
@@ -24,7 +24,7 @@ class ProductRecs(ViewSet):
 
         new_productrec = ProductRec()
         new_productrec.sender_id =  user_customer_object.id
-        new_productrec.reciever_id = request.data['reciever_id']
+        new_productrec.receiver_id = request.data['receiver_id']
         new_productrec.product_id = request.data['product_id']
 
         new_productrec.save()
@@ -51,7 +51,7 @@ class ProductRecs(ViewSet):
             customer = Customer.objects.get(user_id=request.auth.user.id)
             print('xxxxxxxxx', customer.id, 'xxxxxxx')
             
-            productrecs = ProductRec.objects.filter(reciever_id=customer.id)
+            productrecs = ProductRec.objects.filter(receiver_id=customer.id)
         
             serializer = ProductRecSerializer(
                 productrecs, many=True, context={'request': request})

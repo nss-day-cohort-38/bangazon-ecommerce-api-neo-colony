@@ -9,7 +9,7 @@ from django.contrib.auth.models import User
 class ProductRec(models.Model):
     
     sender = models.ForeignKey(Customer, related_name="sender", on_delete = models.CASCADE )
-    reciever = models.ForeignKey(Customer, related_name="reciever", on_delete = models.CASCADE )
+    receiver = models.ForeignKey(Customer, related_name="receiver", on_delete = models.CASCADE )
     product =  models.ForeignKey(Product, on_delete = models.CASCADE )   
     
     class Meta:
