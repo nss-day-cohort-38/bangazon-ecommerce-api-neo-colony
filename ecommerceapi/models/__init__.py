@@ -4,3 +4,4 @@ from .orderproduct import OrderProduct
 from .paymenttype import PaymentType
 from .producttype import ProductType
 from .product import Product
+from .productrec import ProductRec
