@@ -43,7 +43,7 @@ class Orders(ViewSet):
 
     def list(self, request, pk=None):
         
-        order = Order.objects.filter(customer_id = request.auth.user.id, payment_type=True)
+        order = Order.objects.filter(customer_id = request.auth.user.id, payment_type_id__isnull=False)
         serializer = OrderSerializer(order, many=True, context={'request': request})
 
         return Response(serializer.data)
