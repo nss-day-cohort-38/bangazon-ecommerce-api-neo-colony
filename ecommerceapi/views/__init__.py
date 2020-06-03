@@ -6,3 +6,4 @@ from .user import Users
 from .register import register_user, login_user
 from .producttype import ProductTypes
 from .orderproduct import OrderProducts
+from .productlike import ProductLikes

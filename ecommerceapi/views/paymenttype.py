@@ -63,7 +63,7 @@ class PaymentTypes(ViewSet):
             return Response({'message': ex.args[0]}, status=status.HTTP_500_INTERNAL_SERVER_ERROR)
 
     def list(self, request):
-        
+
         payment_type = PaymentType.objects.all()
 
         serializer = PaymentTypeSerializer(
