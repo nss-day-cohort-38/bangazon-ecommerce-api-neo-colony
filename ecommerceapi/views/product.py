@@ -95,6 +95,8 @@ class Products(ViewSet):
 
         location = self.request.query_params.get('location')
 
+        category_id = self.request.query_params.get('category')
+
         if total is not None:
             products = Product.objects.order_by('-id')[:int(total)]
 
@@ -103,6 +105,9 @@ class Products(ViewSet):
         
         if location is not None:
             products = Product.objects.filter(location__icontains = location)
+
+        if category_id is not None:
+            products = Product.objects.filter(product_type_id=category_id)
 
         serializer = ProductSerializer(
             products, many=True, context={'request': request})
