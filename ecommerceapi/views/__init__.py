@@ -8,3 +8,4 @@ from .producttype import ProductTypes
 from .orderproduct import OrderProducts
 from .productrec import ProductRecs
 from .productlike import ProductLikes
+from .sellersproducts import MyProducts
