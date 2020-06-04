@@ -4,6 +4,7 @@ from rest_framework.response import Response
 from rest_framework import serializers
 from rest_framework import status
 from ..models import Product, Customer
+from rest_framework.parsers import MultiPartParser, FormParser, JSONParser
 
 
 class ProductSerializer(serializers.HyperlinkedModelSerializer):
@@ -15,10 +16,11 @@ class ProductSerializer(serializers.HyperlinkedModelSerializer):
             lookup_field='id'
         )
         fields = ('id', 'title', 'customer_id', 'price', 'description',
-                  'quantity', 'location', 'image_path', 'created_at', 'product_type_id')
+                  'quantity', 'location', 'image', 'created_at', 'product_type_id')
 
 
 class Products(ViewSet):
+    parser_classes = (MultiPartParser, FormParser, JSONParser,)
 
     def create(self, request):
     
@@ -28,7 +30,7 @@ class Products(ViewSet):
         new_product.description = request.data["description"]
         new_product.quantity = request.data["quantity"]
         new_product.location = request.data["location"]
-        new_product.image_path = request.data["image_path"]
+        new_product.image = request.data["image"]
         new_product.product_type_id = request.data["product_type_id"]
 
         customer = Customer.objects.get(pk=request.data["customer_id"])
@@ -61,7 +63,7 @@ class Products(ViewSet):
         product.description = request.data["description"]
         product.quantity = request.data["quantity"]
         product.location = request.data["location"]
-        product.image_path = request.data["image_path"]
+        product.image = request.data["image"]
         product.product_type_id = request.data["product_type_id"]
         product.save()
 

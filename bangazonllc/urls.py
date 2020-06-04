@@ -20,6 +20,8 @@ from ecommerceapi.views import register_user, login_user
 from django.contrib import admin
 from django.urls import path 
 from ecommerceapi.views import *
+from django.conf.urls.static import static
+from django.conf import settings
 
 
 router = routers.DefaultRouter(trailing_slash=False)
@@ -43,3 +45,5 @@ urlpatterns = [
     path('api-token-auth', obtain_auth_token),
     path('api-auth', include('rest_framework.urls', namespace='rest_framework')),
     ]
+
+urlpatterns += static(settings.MEDIA_URL, document_root=settings.MEDIA_ROOT)
