@@ -23,14 +23,15 @@ class MyProducts(ViewSet):
 
     def list(self, request):
 
-        sellers_products = Product.objects.filter(customer_id=request.auth.user.id)
+        customer = Customer.objects.get(user_id=request.auth.user.id)
+        sellers_products = Product.objects.filter(customer_id=customer.id)
 
         for product in sellers_products:
             
             order_products = OrderProduct.objects.filter(product_id=product.id)
             
             product.sold_products = len(order_products)
-            
+
             product.quantity -= product.sold_products
 
 
