@@ -15,6 +15,7 @@ class Product(models.Model):
     image_path = models.CharField(null = False, max_length = 255 )
     created_at = models.DateTimeField(auto_now_add= True)
     product_type = models.ForeignKey(ProductType, related_name="products", null = False, on_delete = models.DO_NOTHING)
+    sold_products = 0
     
     
     class Meta:
