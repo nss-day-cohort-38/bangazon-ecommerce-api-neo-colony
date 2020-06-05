@@ -35,8 +35,8 @@ class PaymentTypes(ViewSet):
         new_payment_type.account_number = request.data["account_number"]
         new_payment_type.expiration_date = request.data["expiration_date"]
 
-        customer = Customer.objects.get(pk=request.data["customer_id"])
-        new_payment_type.customer = customer
+        customer_id = Customer.objects.get(user_id=request.auth.user.id)
+        new_payment_type.customer = customer_id
         new_payment_type.save()
 
         serializer = PaymentTypeSerializer(
