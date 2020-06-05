@@ -52,6 +52,15 @@ class Customers(ViewSet):
 
         return Response({}, status=status.HTTP_204_NO_CONTENT)
 
+    def list(self, request):
+
+        customer = Customer.objects.filter(user_id=request.auth.user.id)
+
+        serializer = CustomerSerializer(
+            customer, many=True, context={'request': request})
+
+        return Response(serializer.data)    
+
 
 
         
