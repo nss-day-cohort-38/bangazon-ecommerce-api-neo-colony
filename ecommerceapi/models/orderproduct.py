@@ -9,7 +9,7 @@ class OrderProduct(models.Model):
     
     order= models.ForeignKey(Order, related_name="orderproducts", on_delete = models.CASCADE )
     product = models.ForeignKey(Product, on_delete = models.CASCADE )
-    rating = models.IntegerField(null = False)
+    rating = models.IntegerField(null = True)
     
     class Meta:
         verbose_name = ("OrderProduct")
