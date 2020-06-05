@@ -64,9 +64,10 @@ class PaymentTypes(ViewSet):
 
     def list(self, request):
 
-        payment_type = PaymentType.objects.all()
+        customer_id = Customer.objects.get(user_id=request.auth.user.id)
+        payment_types = PaymentType.objects.filter(customer_id=customer_id)
 
         serializer = PaymentTypeSerializer(
-            payment_type, many=True, context={'request': request})
+            payment_types, many=True, context={'request': request})
 
         return Response(serializer.data)
