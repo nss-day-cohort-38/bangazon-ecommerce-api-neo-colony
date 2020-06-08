@@ -34,7 +34,7 @@ class ProductTypes(ViewSet):
     def list(self, request):
         
         ptypes = ProductType.objects.all()
-      
+        
         serializer = ProductTypeSerializer(
             ptypes, many=True, context={'request': request})
         
