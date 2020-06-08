@@ -33,7 +33,7 @@ class Products(ViewSet):
         new_product.image = request.data["image"]
         new_product.product_type_id = request.data["product_type_id"]
 
-        customer = Customer.objects.get(pk=request.data["customer_id"])
+        customer = Customer.objects.get(user_id=request.auth.user.id)
         new_product.customer = customer
         new_product.save()
 
