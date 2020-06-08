@@ -49,7 +49,6 @@ class ProductRecs(ViewSet):
         
         try:
             customer = Customer.objects.get(user_id=request.auth.user.id)
-            print('xxxxxxxxx', customer.id, 'xxxxxxx')
             
             productrecs = ProductRec.objects.filter(receiver_id=customer.id)
         
