@@ -99,6 +99,8 @@ class Products(ViewSet):
 
         category_id = self.request.query_params.get('category')
 
+        seller = self.request.query_params.get('seller')
+
         if total is not None:
             products = Product.objects.order_by('-id')[:int(total)]
 
@@ -110,6 +112,10 @@ class Products(ViewSet):
 
         if category_id is not None:
             products = Product.objects.filter(product_type_id=category_id)
+
+        if seller is not None:
+            customer = Customer.objects.get(user_id = request.auth.user.id)
+            products = Product.objects.filter(customer_id = customer.id)
 
         serializer = ProductSerializer(
             products, many=True, context={'request': request})
