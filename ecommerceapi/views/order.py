@@ -66,7 +66,7 @@ class Orders(ViewSet):
     def update(self, request, pk=None):
         customer = Customer.objects.get(user_id=request.auth.user.id)
         order = Order.objects.get(customer_id= customer.id, payment_type=None)
-        order.payment_type = request.data['payment_type']
+        order.payment_type_id = request.data['payment_type_id']
         order.save()
 
         return Response({}, status=status.HTTP_204_NO_CONTENT)
