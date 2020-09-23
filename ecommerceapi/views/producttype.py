@@ -32,10 +32,15 @@ class ProductTypes(ViewSet):
             return HttpResponseServerError(ex)
     
     def list(self, request):
+
+        try:
         
-        ptypes = ProductType.objects.all()
-        
-        serializer = ProductTypeSerializer(
-            ptypes, many=True, context={'request': request})
-        
-        return Response(serializer.data)
+            ptypes = ProductType.objects.all()
+            
+            serializer = ProductTypeSerializer(
+                ptypes, many=True, context={'request': request})
+            
+            return Response(serializer.data)
+
+        except Exception as ex:
+            return HttpResponseServerError(ex)            
