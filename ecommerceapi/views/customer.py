@@ -52,12 +52,12 @@ class Customers(ViewSet):
 
         return Response({}, status=status.HTTP_204_NO_CONTENT)
 
-    def list(self, request):
+    def list(self, request, pk=None):
 
-        customer = Customer.objects.filter(user_id=request.auth.user.id)
+        customer = Customer.objects.filter(user_id=pk)
 
         serializer = CustomerSerializer(
-            customer, many=True, context={'request': request})
+            customer, context={'request': request})
 
         return Response(serializer.data)    
 
