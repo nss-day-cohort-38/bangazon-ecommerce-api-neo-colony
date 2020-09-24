@@ -89,35 +89,39 @@ class Products(ViewSet):
 
     def list(self, request):
         
-        products = Product.objects.all()
+        try:
+            products = Product.objects.all()
 
-        total = self.request.query_params.get('total')
+            total = self.request.query_params.get('total')
 
-        search_term = self.request.query_params.get('title')
+            search_term = self.request.query_params.get('title')
 
-        location = self.request.query_params.get('location')
+            location = self.request.query_params.get('location')
 
-        category_id = self.request.query_params.get('category')
+            category_id = self.request.query_params.get('category')
 
-        seller = self.request.query_params.get('seller')
+            seller = self.request.query_params.get('seller')
 
-        if total is not None:
-            products = Product.objects.order_by('-id')[:int(total)]
+            if total is not None:
+                products = Product.objects.order_by('-id')[:int(total)]
 
-        if search_term is not None:
-            products = Product.objects.filter(title__icontains=search_term)
+            if search_term is not None:
+                products = Product.objects.filter(title__icontains=search_term)
+            
+            if location is not None:
+                products = Product.objects.filter(location__icontains = location)
+
+            if category_id is not None:
+                products = Product.objects.filter(product_type_id=category_id)
+
+            if seller is not None:
+                customer = Customer.objects.get(user_id = request.auth.user.id)
+                products = Product.objects.filter(customer_id = customer.id)
+
+            serializer = ProductSerializer(
+                products, many=True, context={'request': request})
+
+            return Response(serializer.data)
         
-        if location is not None:
-            products = Product.objects.filter(location__icontains = location)
-
-        if category_id is not None:
-            products = Product.objects.filter(product_type_id=category_id)
-
-        if seller is not None:
-            customer = Customer.objects.get(user_id = request.auth.user.id)
-            products = Product.objects.filter(customer_id = customer.id)
-
-        serializer = ProductSerializer(
-            products, many=True, context={'request': request})
-
-        return Response(serializer.data)
+        except Exception as ex:
+            return Response({'message': ex.args[0]}, status=status.HTTP_500_INTERNAL_SERVER_ERROR)
