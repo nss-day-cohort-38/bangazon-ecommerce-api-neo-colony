@@ -24,9 +24,13 @@ class Products(ViewSet):
 
     def create(self, request):
     
+        price_str = str(request.data["price"])
+        split_price = price_str.split('$')
+        updated_price = split_price[1]
+        
         new_product = Product()
         new_product.title = request.data["title"]
-        new_product.price = request.data["price"]
+        new_product.price = updated_price
         new_product.description = request.data["description"]
         new_product.quantity = request.data["quantity"]
         new_product.location = request.data["location"]
