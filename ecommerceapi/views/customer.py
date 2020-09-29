@@ -27,7 +27,7 @@ class Customers(ViewSet):
 
     def retrieve(self, request, pk=None):
         try:
-            customer = Customer.objects.get(pk=pk)
+            customer = Customer.objects.get(user_id=pk)
             serializer = CustomerSerializer(customer, context={'request': request})
             return Response(serializer.data)
 
